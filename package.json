@@ -1,0 +1,60 @@
+{
+  "name": "light-core",
+  "version": "0.0.1",
+  "description": "LightCore",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SmartCircle/LightFramework.git"
+  },
+  "keywords": [
+    "light"
+  ],
+  "author": "r2space@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SmartCircle/LightFramework/issues"
+  },
+  "homepage": "https://github.com/SmartCircle/LightFramework",
+  "dependencies": {
+    "co": "4.3.1",
+    "async": "0.9.0",
+    "ejs": "2.2.4",
+    "js-yaml": "3.2.7",
+    "mongodb": "2.0.31",
+    "moment": "2.9.0",
+    "numeral": "1.5.3",
+    "underscore": "1.8.2",
+    "underscore.string": "3.0.3",
+    "express": "4.11.2",
+    "csurf": "1.6.6",
+    "multiparty": "4.1.1",
+    "express-session": "1.10.2",
+    "morgan": "1.5.1",
+    "body-parser": "1.11.0",
+    "method-override": "2.3.1",
+    "cookie-parser": "1.3.3",
+    "connect-mongo": "0.7.0",
+    "serve-favicon": "2.2.0",
+    "lru-cache": "2.6.5",
+    "socket.io": "1.3.3",
+    "socket.io-client": "1.3.3",
+    "xml2js": "0.4.4",
+    "zip-stream": "0.5.0",
+    "qr-image": "3.1.0",
+    "uuid": "2.0.1",
+    "request": "2.53.0",
+    "mpath": "0.2.1",
+    "pluralize": "1.1.2",
+    "should": "6.0.1",
+    "cron": "1.0.9",
+    "oracledb": "0.6.0",
+    "mysql": "2.7.0",
+    "generic-pool": "2.2.0",
+    "accept-language":"2.0.16",
+    "validator": "3.40.1"
+  }
+}
