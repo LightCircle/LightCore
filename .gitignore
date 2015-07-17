@@ -1,0 +1,33 @@
+# node模块
+node_modules/
+
+# 文档
+docs/
+
+# 代码分析报告
+reports/
+
+# 日志文件
+*/logs/*log*
+
+# 上传等临时文件
+tmp/
+
+# mac用管理文件
+.DS_Store
+
+# WebStorm管理文件
+.idea
+
+# npm安装日志
+npm-debug.log
+
+# cpp编译日志
+builderror.log
+build/
+
+# java编译生成文件
+/lib/java/target*
+
+# oracle client sdk
+instantclient/
