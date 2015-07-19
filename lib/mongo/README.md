@@ -33,3 +33,30 @@ or
 ## 查看所有用户
 > use admin
 > db.system.users.find()
+
+----
+## 添加平台需要的数据库账户
+> mongo --host 10.10.109.78 --port 57017 -u user -p password --authenticationDatabase=admin
+> use admin
+> db.createUser({user: "user",pwd: "password",roles: [{ role: "root", db: "admin" }]});
+
+> use LightDB
+> db.createUser({user: "user",pwd: "password",roles: [{ role: "readWrite", db: "LightDB" }]});
+
+> use Fluentd
+> db.createUser({user: "user",pwd: "password",roles: [{ role: "dbAdmin", db: "Fluentd" }]});
+
+> use SampleDB
+> db.createUser({user: "user",pwd: "password",roles: [{ role: "readWrite", db: "SampleDB" }]});
+
+----
+## 更新role
+> db.getUser("sample")
+> db.updateUser("sample", {"roles" : [{"role" : "dbOwner", "db" : "SampleApp"}]})
+
+----
+## 修改认证级别
+> use admin
+> var schema = db.system.version.findOne({"_id" : "authSchema"})
+> schema.currentVersion = 3
+> db.system.version.save(schema)
