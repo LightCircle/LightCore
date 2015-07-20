@@ -51,7 +51,6 @@
     "pluralize": "1.1.2",
     "should": "6.0.1",
     "cron": "1.0.9",
-    "oracledb": "0.6.0",
     "mysql": "2.7.0",
     "generic-pool": "2.2.0",
     "accept-language":"2.0.16",
