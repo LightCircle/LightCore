@@ -11,7 +11,7 @@ var test = light.framework.test
   , should = test.should
   , mock = test.mock
   , async = test.async
-  , Model = require(__framework + "/lib/mongo/model")
+  , Model = require(__core + "/lib/mongo/model")
   ;
 
 

@@ -98,7 +98,7 @@ module.exports = {
 function initialize() {
   _.str = require("underscore.string");
   _.mixin(_.str.exports());
-  global.__framework = __dirname;
+  global.__core = __dirname;
 }
 
 initialize();

@@ -7,7 +7,7 @@
 var test = light.framework.test
   , ObjectID  = light.util.mongodb.ObjectID
   , should = test.should
-  , mapping = require(__framework + "/lib/mongo/mapping")
+  , mapping = require(__core + "/lib/mongo/mapping")
   ;
 
 

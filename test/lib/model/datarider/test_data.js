@@ -10,7 +10,7 @@ var test = light.framework.test
   , should = test.should
   , mock = test.mock
   , async = test.async
-  , data = require(__model + "/lib/model/datarider/data")
+  , data = require(__core + "/lib/model/datarider/data")
   ;
 
 describe("/lib/mongo/model", function () {

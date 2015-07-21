@@ -10,7 +10,7 @@ var test = light.framework.test
   , should = test.should
   , mock = test.mock
   , async = test.async
-  , job = require(__framework + "/lib/job/launcher")
+  , job = require(__core + "/lib/job/launcher")
   ;
 
 describe("/lib/job/launcher", function () {
