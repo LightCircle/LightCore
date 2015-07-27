@@ -34,8 +34,6 @@ module.exports = {
     "moment":       require("moment"),
     "numeral":      require("numeral"),
     "underscore":   require("underscore"),
-    "socket":       require("socket.io"),
-    "socketclient": require("socket.io-client"),
     "xml2js":       require("xml2js"),
     "request":      require("request"),
     "mpath":        require("mpath"),
