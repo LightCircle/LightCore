@@ -60,6 +60,7 @@ module.exports = {
     "test":       require("./lib/test"),
     "job":        require("./lib/job"),
     "signal":     require("./lib/signal"),
+    "mq":         require("./lib/mq"),
 
     "mongomodel": require("./lib/mongo/model"),
     "mongoctrl":  require("./lib/mongo/controller"),
