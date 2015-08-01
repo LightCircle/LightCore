@@ -52,6 +52,7 @@
     "mysql": "2.8.0",
     "generic-pool": "2.2.0",
     "accept-language":"2.0.16",
-    "validator": "3.40.1"
+    "validator": "3.40.1",
+    "amqp": "0.2.4"
   }
 }
