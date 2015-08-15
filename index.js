@@ -87,7 +87,8 @@ module.exports = {
     system:       require("./lib/model/system"),
     rider:        require("./lib/model/datarider"),
     migrate:      require("./lib/model/datamigrate"),
-    job:          require("./lib/model/job")
+    job:          require("./lib/model/job"),
+    file:         require("./lib/model/file") // file里的方法通过API可以使用，但是在APP的后台无法调用，故开放（其他类需要斟酌后陆续添加）
   }
 };
 
