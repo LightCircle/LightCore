@@ -1,6 +1,6 @@
 {
   "name": "light-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "LightCore",
   "main": "index.js",
   "scripts": {
@@ -50,7 +50,7 @@
     "cron": "1.0.9",
     "mysql": "2.9.0",
     "generic-pool": "2.2.0",
-    "accept-language":"2.0.16",
+    "accept-language": "2.0.16",
     "validator": "4.0.5",
     "amqp": "0.2.4"
   }
