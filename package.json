@@ -34,6 +34,7 @@
     "express-session": "1.11.3",
     "morgan": "1.6.1",
     "body-parser": "1.14.1",
+    "express-xml-bodyparser": "0.2.2",
     "method-override": "2.3.5",
     "connect-mongo": "0.8.2",
     "serve-favicon": "2.3.0",
