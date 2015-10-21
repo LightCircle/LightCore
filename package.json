@@ -54,6 +54,7 @@
     "validator": "4.1.0",
     "amqp": "0.2.4",
     "cookie": "0.2.2",
-    "jwt-simple": "0.3.1"
+    "jwt-simple": "0.3.1",
+    "websocket": "1.0.21"
   }
 }
