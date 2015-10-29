@@ -13,14 +13,15 @@ module.exports = {
    * nodejs语言级别可用的模块
    */
   lang: {
-    "fs":         require("fs"),
-    "http":       require("http"),            // Stability: 3 - Stable
-    "util":       require("util"),            // Stability: 4 - API Frozen
-    "path":       require("path"),            // Stability: 3 - Stable
-    "cluster":    require("cluster"),         // Stability: 2 - Unstable
-    "os":         require("os"),              // Stability: 4 - API Frozen
-    "events":     require("events"),          // Stability: 4 - API Frozen
-    "childproc":  require("child_process")    // Stability: 3 - Stable
+    "fs":           require("fs"),
+    "http":         require("http"),            // Stability: 3 - Stable
+    "util":         require("util"),            // Stability: 4 - API Frozen
+    "path":         require("path"),            // Stability: 3 - Stable
+    "cluster":      require("cluster"),         // Stability: 2 - Unstable
+    "os":           require("os"),              // Stability: 4 - API Frozen
+    "events":       require("events"),          // Stability: 4 - API Frozen
+    "childproc":    require("child_process"),   // Stability: 3 - Stable
+    "querystring":  require("querystring")      // Stability: 3 - Stable
   },
 
   /**
