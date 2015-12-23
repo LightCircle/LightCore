@@ -38,6 +38,7 @@ module.exports = {
     "xml2js":       require("xml2js"),
     "request":      require("request"),
     "mpath":        require("mpath"),
+    "zip":          require("zip-stream"),
 
     /* 废弃或移出预定 */
     //"config":       require("config"),
