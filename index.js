@@ -28,7 +28,6 @@ module.exports = {
    * 第三方模块
    */
   util: {
-    "co":           require("co"),
     "async":        require("async"),
     "ejs":          require("ejs"),
     "mongodb":      require("mongodb"),
