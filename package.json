@@ -55,6 +55,7 @@
     "amqp": "0.2.4",
     "cookie": "0.2.3",
     "jwt-simple": "0.4.0",
-    "websocket": "1.0.22"
+    "websocket": "1.0.22",
+    "csv": "0.4.6"
   }
 }
