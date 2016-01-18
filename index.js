@@ -71,12 +71,12 @@ module.exports = {
     "mongooper":  require("./lib/mongo/operator"),
 
     "oracle":     require("./lib/oracle/connection"),
+    "mysql":      require("./lib/mysql/model"),
 
     "context":    require("./lib/http/context"),
     "loader":     require("./lib/http/loader"),
     "middleware": require("./lib/http/middleware"),
-    "response":   require("./lib/http/response"),
-    "sqlbuilder": require("./lib/sqlbuilder")
+    "response":   require("./lib/http/response")
   },
 
   /**
