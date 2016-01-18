@@ -85,7 +85,7 @@ module.exports = {
   model: {
     auth:         require("./lib/security"), // 预定废弃，请使用security
     security:     require("./lib/security"),
-    dispatcher:   require("./lib/model/tool/dispatcher"),
+    dispatcher:   require("./lib/dispatcher"),
     system:       require("./lib/model/system"),
     rider:        require("./lib/model/datarider"),
     migrate:      require("./lib/model/datamigrate"),
