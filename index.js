@@ -83,8 +83,8 @@ module.exports = {
    * 数据定义模块
    */
   model: {
-    auth:         require("./lib/model/tool/security"), // 预定废弃，请使用security
-    security:     require("./lib/model/tool/security"),
+    auth:         require("./lib/security"), // 预定废弃，请使用security
+    security:     require("./lib/security"),
     dispatcher:   require("./lib/model/tool/dispatcher"),
     system:       require("./lib/model/system"),
     rider:        require("./lib/model/datarider"),
