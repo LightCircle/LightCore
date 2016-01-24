@@ -71,7 +71,7 @@ module.exports = {
     "mongooper":  require("./lib/mongo/operator"),
 
     "oracle":     require("./lib/oracle/connection"),
-    "mysql":      require("./lib/mysql/model"),
+    "mysql":      require("./lib/mysql/controller"),
 
     "context":    require("./lib/http/context"),
     "loader":     require("./lib/http/loader"),
