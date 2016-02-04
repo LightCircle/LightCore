@@ -36,6 +36,7 @@
     "express-xml-bodyparser": "0.2.2",
     "method-override": "2.3.5",
     "connect-mongo": "1.0.2",
+    "connect-sqlite3": "0.9.7",
     "lru-cache": "4.0.0",
     "xml2js": "0.4.15",
     "zip-stream": "0.8.0",
