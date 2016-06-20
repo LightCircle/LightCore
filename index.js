@@ -38,6 +38,7 @@ module.exports = {
     "request":      require("request"),
     "mpath":        require("mpath"),
     "zip":          require("zip-stream"),
+    "cron":         require("cron"),
 
     /* 废弃或移出预定 */
     //"config":       require("config"),
