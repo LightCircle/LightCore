@@ -54,7 +54,6 @@ module.exports = {
     "error":      require("./lib/error"),
     "log":        require("./lib/log"),
     "helper":     require("./lib/helper"),
-    "validator":  require("./lib/validator"),
     "command":    require("./lib/command"),
     "cache":      require("./lib/cache"),
     "captcha":    require("./lib/image/captchapng"),
@@ -64,6 +63,7 @@ module.exports = {
     "signal":     require("./lib/signal"),
     "socket":     require("./lib/socket"),
     "mq":         require("./lib/mq"),
+    "validator":  require("./lib/validator"),
 
     "mongomodel": require("./lib/mongo/model"),
     "mongoctrl":  require("./lib/mongo/controller"),
