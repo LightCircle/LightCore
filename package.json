@@ -58,6 +58,7 @@
     "websocket": "1.0.22",
     "csv": "0.4.6",
     "xlsx": "0.8.0",
-    "js-yaml": "3.6.1"
+    "js-yaml": "3.6.1",
+    "range-parser": "1.2.0"
   }
 }
