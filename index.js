@@ -39,6 +39,8 @@ module.exports = {
     "mpath":        require("mpath"),
     "zip":          require("zip-stream"),
     "cron":         require("cron"),
+    "git":          require("simple-git"),
+    "mime":         require("mime-types"),
 
     /* 废弃或移出预定 */
     //"config":       require("config"),
