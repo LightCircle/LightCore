@@ -4,6 +4,9 @@
 
 "use strict";
 
+global.light        = require("../../../../LightCore");
+global.light.rider  = light.model.rider;
+
 var test = light.framework.test
   , ObjectID  = light.util.mongodb.ObjectID
   , should = test.should
@@ -118,12 +121,12 @@ describe("/lib/mongo/mapping", function () {
         , goodAt: true
         , detail: {no: 1001}
         , playmate: [{scores: ["80", "90", "99"]}, {name: "jim", scores: ["80", "90", "99"]}, {name: "jack", age:22, scores: [100]}]
-        , require: {age: "20", sex: "female"}
+        , require: {age: 20, sex: "female"}
       }, {
         _id: "000000000000000000000000"
         , degree: "3"
         , goodAt: "false"
-        , require: {age: "20", sex: "female"}
+        , require: {age: 20, sex: "female"}
       }]);
       result.weather.should.be.eql({temperature: 22, description: "very good!"});
       done();
@@ -176,12 +179,12 @@ describe("/lib/mongo/mapping", function () {
         , goodAt: true
         , detail: {no: 1001}
         , playmate: [{scores: ["80", "90", "99"]}, {name: "jim", scores: ["80", "90", "99"]}, {name: "jack", age:22, scores: [100]}]
-        , require: {age: "20", sex: "female"}
+        , require: {age: 20, sex: "female"}
       }, {
         _id: "000000000000000000000000"
         , degree: "3"
         , goodAt: "false"
-        , require: {age: "20", sex: "female"}
+        , require: {age: 20, sex: "female"}
       }]);
       result[1].weather.should.be.eql({temperature: 22, description: "very good!"});
       done();
