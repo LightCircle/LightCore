@@ -7,7 +7,7 @@
 let _       = require("underscore")
   , moment  = require("moment")
   , should  = require("should")
-  , helper  = require("../../lib/helper")
+  , helper  = require("../lib/helper")
   ;
 
 describe("/lib/helper", function () {

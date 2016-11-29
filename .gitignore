@@ -31,3 +31,6 @@ build/
 
 # oracle client sdk
 instantclient/
+
+# 测试覆盖率检查
+coverage

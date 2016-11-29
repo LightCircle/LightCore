@@ -4,49 +4,60 @@
 
 "use strict";
 
-global.light        = require("../../../../LightCore");
-global.light.rider  = light.model.rider;
-
-var test = light.framework.test
-  , ObjectID  = light.util.mongodb.ObjectID
-  , should = test.should
-  , mapping = require(__core + "/lib/mongo/mapping")
+let should    = require("should")
+  , _         = require("underscore")
+  , ObjectID  = require("mongodb").ObjectID
+  , mapping   = require("../lib/mongo/mapping")
   ;
 
 
-var define = {
-    _id: {type: ObjectID}
-  , name: {type: String, default: "zhangsan"}
-  , age: {type: Number}
-  , createAt: {type: "Date", default: new Date().toString()}
-  , single: {type: "Boolean"}
-  , address: {type: Object, default: "{\"province\": \"辽宁\", \"city\": \"大连\"}"}
-  , friends: {type: Array, default: "[\"jobs\", \"bill\", \"ma\"]"}
-  , hobby: {type: Array, contents: {
-      _id: {type: "ObjectID", default: "000000000000000000000000"}
-    , name: {type: "String"}
-    , degree: {type: "Number", default: "3"}
-    , last: {type: Date}
-    , goodAt: {type: Boolean, default: "false"}
-    , detail: {type: Object}
-    , equipment: {type: Array}
-    , playmate: {type: Array, contents: {
-        name: {type: String}
-      , age: {type: Number}
-      , scores: {type: "Array", contents: "String", default: "[80, 90, 99]"}
-      }}
-    , require: {type: Object, contents: {
-        age: {type: Number, default: "18"}
-      , sex: {type: String, default: "male"}
-      }, default: "{\"age\": \"20\", \"sex\": \"female\"}"}
-    }}
-  , weather: {type: Object, contents: {
-      temperature: {type: Number}
-    , description: {type: String, default: "very good!"}
-    }, default: "{\"temperature\": 22}"}
-  };
+let define = {
+  _id: {type: ObjectID},
+  name: {type: String, default: "zhangsan"},
+  age: {type: Number},
+  createAt: {type: "Date", default: new Date().toString()},
+  single: {type: "Boolean"},
+  address: {type: Object, default: "{\"province\": \"辽宁\", \"city\": \"大连\"}"},
+  friends: {type: Array, default: "[\"jobs\", \"bill\", \"ma\"]"},
+  hobby: {
+    type: Array, contents: {
+      _id: {type: "ObjectID", default: "000000000000000000000000"},
+      name: {type: "String"},
+      degree: {type: "Number", default: "3"},
+      last: {type: Date},
+      goodAt: {type: Boolean, default: "false"},
+      detail: {type: Object},
+      equipment: {type: Array},
+      playmate: {
+        type: Array, contents: {
+          name: {type: String},
+          age: {type: Number},
+          scores: {type: "Array", contents: "String", default: "[80, 90, 99]"}
+        }
+      },
+      require: {
+        type: Object, contents: {
+          age: {type: Number, default: "18"},
+          sex: {type: String, default: "male"}
+        },
+        default: "{\"age\": \"20\", \"sex\": \"female\"}"
+      }
+    }
+  },
+  weather: {
+    type: Object, contents: {
+      temperature: {type: Number},
+      description: {type: String, default: "very good!"}
+    },
+    default: "{\"temperature\": 22}"
+  }
+};
 
 describe("/lib/mongo/mapping", function () {
+
+  before(function() {
+    _.str = require("underscore.string")
+  });
 
   /** *************************************** **/
   describe("exports.default", function () {
@@ -62,7 +73,7 @@ describe("/lib/mongo/mapping", function () {
       done();
     });
 
-    it("has no define", function(done) {
+    it("has no define", function (done) {
       var data = {name: "wangwu"};
       var result = mapping.default(data, undefined);
       result.should.have.property("name").eql("wangwu");
@@ -70,17 +81,17 @@ describe("/lib/mongo/mapping", function () {
     });
 
     // 只包含第一层的数据
-    it("use an object only contains first floor", function(done) {
+    it("use an object only contains first floor", function (done) {
       var data = {
         _id: "000000000000000000000000"
-      , name: "lisi"
-      , age: 16
-      , createAt: new Date().toString()
-      , single: false
-      , address: {
+        , name: "lisi"
+        , age: 16
+        , createAt: new Date().toString()
+        , single: false
+        , address: {
           lazy: true
         }
-      , friends: ["tom", "cat"]
+        , friends: ["tom", "cat"]
       };
       var result = mapping.default(data, define);
       result.name.should.be.exactly("lisi");
@@ -91,7 +102,7 @@ describe("/lib/mongo/mapping", function () {
     });
 
     // 包含第二层
-    it("use an object contains second floor", function(done) {
+    it("use an object contains second floor", function (done) {
       var date = new Date();
       var data = {
         _id: "000000000000000000000000"
@@ -104,24 +115,28 @@ describe("/lib/mongo/mapping", function () {
         }
         , friends: ["tom", "cat"]
         , hobby: [{
-            degree: 1
+          degree: 1
           , last: date
           , goodAt: true
           , detail: {no: 1001}
-          , playmate: [{}, {name: "jim"}, {name: "jack", age:22, scores: [100]}]
+          , playmate: [{}, {name: "jim"}, {name: "jack", age: 22, scores: [100]}]
         }, {}]
       };
       var result = mapping.default(data, define);
       result.address.should.be.eql({lazy: true});
       result.friends.should.be.eql(["tom", "cat"]);
       result.hobby.should.be.eql([{
-        _id: "000000000000000000000000"
-        , degree: 1
-        , last: date
-        , goodAt: true
-        , detail: {no: 1001}
-        , playmate: [{scores: ["80", "90", "99"]}, {name: "jim", scores: ["80", "90", "99"]}, {name: "jack", age:22, scores: [100]}]
-        , require: {age: 20, sex: "female"}
+        _id: "000000000000000000000000",
+        degree: 1,
+        last: date,
+        goodAt: true,
+        detail: {no: 1001},
+        playmate: [{scores: ["80", "90", "99"]}, {name: "jim", scores: ["80", "90", "99"]}, {
+          name: "jack",
+          age: 22,
+          scores: [100]
+        }],
+        require: {age: 20, sex: "female"}
       }, {
         _id: "000000000000000000000000"
         , degree: "3"
@@ -133,7 +148,7 @@ describe("/lib/mongo/mapping", function () {
     });
 
     // 整体是个数组，元素中包含了第一二层数据
-    it("use an array object contains second level", function(done) {
+    it("use an array object contains second level", function (done) {
       var date = new Date();
       var data = [{
         _id: "000000000000000000000000"
@@ -161,7 +176,7 @@ describe("/lib/mongo/mapping", function () {
           , last: date
           , goodAt: true
           , detail: {no: 1001}
-          , playmate: [{}, {name: "jim"}, {name: "jack", age:22, scores: [100]}]
+          , playmate: [{}, {name: "jim"}, {name: "jack", age: 22, scores: [100]}]
         }, {}]
       }];
       var result = mapping.default(data, define);
@@ -173,18 +188,22 @@ describe("/lib/mongo/mapping", function () {
       result[1].address.should.be.eql({lazy: true});
       result[1].friends.should.be.eql(["tom", "cat"]);
       result[1].hobby.should.be.eql([{
-        _id: "000000000000000000000000"
-        , degree: 1
-        , last: date
-        , goodAt: true
-        , detail: {no: 1001}
-        , playmate: [{scores: ["80", "90", "99"]}, {name: "jim", scores: ["80", "90", "99"]}, {name: "jack", age:22, scores: [100]}]
-        , require: {age: 20, sex: "female"}
+        _id: "000000000000000000000000",
+        degree: 1,
+        last: date,
+        goodAt: true,
+        detail: {no: 1001},
+        playmate: [{scores: ["80", "90", "99"]}, {name: "jim", scores: ["80", "90", "99"]}, {
+          name: "jack",
+          age: 22,
+          scores: [100]
+        }],
+        require: {age: 20, sex: "female"}
       }, {
-        _id: "000000000000000000000000"
-        , degree: "3"
-        , goodAt: "false"
-        , require: {age: 20, sex: "female"}
+        _id: "000000000000000000000000",
+        degree: "3",
+        goodAt: "false",
+        require: {age: 20, sex: "female"}
       }]);
       result[1].weather.should.be.eql({temperature: 22, description: "very good!"});
       done();
@@ -210,7 +229,7 @@ describe("/lib/mongo/mapping", function () {
       done();
     });
 
-    it("convert object", function(done) {
+    it("convert object", function (done) {
       var date = new Date();
       var data = {
         name: 111
@@ -249,7 +268,7 @@ describe("/lib/mongo/mapping", function () {
       should(result._id).be.exactly(null);
       result.createAt.should.not.eql(false);
       should(result.single).be.exactly(null);
-      result.address.should.eql([1,2,3]);
+      result.address.should.eql([1, 2, 3]);
       result.friends.should.eql(["tomcat"]);
       result.hobby.should.eql([{
         "_id": null,

@@ -5,8 +5,8 @@
 "use strict";
 
 let should  = require("should")
-  , log     = require("../../lib/log")
-  , config  = require("../../lib/configuration")
+  , log     = require("../lib/log")
+  , config  = require("../lib/configuration")
   ;
 
 describe("/lib/log", function () {

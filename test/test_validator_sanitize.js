@@ -6,13 +6,10 @@
 
 let moment = require("moment")
   , should  = require("should")
-  , sanitize  = require("../../lib/validator2/sanitize")
+  , sanitize  = require("../lib/validator2/sanitize")
   ;
 
 describe("/lib/validator/sanitize", function () {
-
-  before(function() {
-  });
 
   /** *************************************** **/
   describe("exports.dateFormat", function () {
