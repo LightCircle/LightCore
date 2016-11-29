@@ -20,7 +20,8 @@ let define = {
   address: {type: Object, default: "{\"province\": \"辽宁\", \"city\": \"大连\"}"},
   friends: {type: Array, default: "[\"jobs\", \"bill\", \"ma\"]"},
   hobby: {
-    type: Array, contents: {
+    type: Array,
+    contents: {
       _id: {type: "ObjectID", default: "000000000000000000000000"},
       name: {type: "String"},
       degree: {type: "Number", default: "3"},
@@ -29,14 +30,16 @@ let define = {
       detail: {type: Object},
       equipment: {type: Array},
       playmate: {
-        type: Array, contents: {
+        type: Array,
+        contents: {
           name: {type: String},
           age: {type: Number},
           scores: {type: "Array", contents: "String", default: "[80, 90, 99]"}
         }
       },
       require: {
-        type: Object, contents: {
+        type: Object,
+        contents: {
           age: {type: Number, default: "18"},
           sex: {type: String, default: "male"}
         },
@@ -45,7 +48,8 @@ let define = {
     }
   },
   weather: {
-    type: Object, contents: {
+    type: Object,
+    contents: {
       temperature: {type: Number},
       description: {type: String, default: "very good!"}
     },
@@ -315,6 +319,57 @@ describe("/lib/mongo/mapping", function () {
       };
       var result = mapping.queryParseAll(data, undefined);
       result.should.have.property("name").eql(111);
+      done();
+    });
+
+    it("parse array", function (done) {
+      let data = {
+        'name': {$in: [1, 2]},
+        'hobby.degree': {$in: ['3', '4']},
+
+      };
+      let result = mapping.queryParseAll(data, define);
+      result.should.eql({'hobby.degree': {$in: [3, 4]}, 'name': {'$in': ['1', '2']}});
+      done();
+    });
+
+    it("parse boolean type", function (done) {
+      let data = {
+        $or: [
+          {'single': 'true'},
+          {'single': true},
+          {'single': 1}
+        ]
+      };
+      let result = mapping.queryParseAll(data, define);
+      result.should.eql({$or: [{'single': true}, {'single': true}, {'single': true}]});
+      done();
+    });
+
+    it("parse operator", function (done) {
+      let data = {
+        $and: [
+          {'age': {'$eq': '10'}},
+          {'age': {'$gt': '10'}},
+          {'age': {'$gte': '10'}},
+          {'age': {'$lt': '10'}},
+          {'age': {'$lte': '10'}},
+          {'age': {'$ne': '10'}},
+          {'friends': {'$in': [1, 'bill']}}
+        ]
+      };
+      let result = mapping.queryParseAll(data, define);
+      result.should.eql({
+        $and: [
+          {age: {'$eq': 10}},
+          {age: {'$gt': 10}},
+          {age: {'$gte': 10}},
+          {age: {'$lt': 10}},
+          {age: {'$lte': 10}},
+          {age: {'$ne': 10}},
+          {friends: {$in: [1, 'bill']}}
+        ]
+      });
       done();
     });
   });
