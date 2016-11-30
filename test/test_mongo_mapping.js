@@ -5,6 +5,7 @@
 "use strict";
 
 let should    = require("should")
+  , moment    = require("moment")
   , _         = require("underscore")
   , ObjectID  = require("mongodb").ObjectID
   , mapping   = require("../lib/mongo/mapping")
@@ -302,6 +303,79 @@ describe("/lib/mongo/mapping", function () {
 
       done();
     });
+
+    it("parse date type", function (done) {
+
+      // test +8 Asia/Shanghai timezone
+      let data = [
+        {'hobby.last': '2016/01/01'},
+        {'hobby.last': '2016-01-01'},
+        {'hobby.last': '20160101'},
+        {'hobby.last': '2016/01/01'},
+        {'hobby.last': '2016-01-01T00:00:00.000+08:00'}
+      ];
+
+      let zoneDate = moment('2016-01-01T00:00:00.000+08:00').toDate();
+      mapping.dataParseAll(data, define, {tz: 'Asia/Shanghai'});
+      data.should.eql([
+        {'hobby.last': zoneDate},
+        {'hobby.last': zoneDate},
+        {'hobby.last': zoneDate},
+        {'hobby.last': zoneDate},
+        {'hobby.last': zoneDate}
+      ]);
+
+      // test utc timezone
+      data = [
+        {'hobby.last': '2016/01/01'},
+        {'hobby.last': '2016-01-01'},
+        {'hobby.last': '20160101'},
+        {'hobby.last': '2016/01/01'},
+        {'hobby.last': '2016-01-01T00:00:00.000Z'}
+      ];
+
+      let utcDate = moment('2016-01-01T00:00:00.000Z').toDate();
+      data = mapping.dataParseAll(data, define, {tz: 'UTC'});
+      data.should.eql([
+        {'hobby.last': utcDate},
+        {'hobby.last': utcDate},
+        {'hobby.last': utcDate},
+        {'hobby.last': utcDate},
+        {'hobby.last': utcDate}
+      ]);
+
+      // test no timezone
+      data = [
+        {'hobby.last': '2016/01/01'},
+        {'hobby.last': '2016-01-01'},
+        {'hobby.last': '20160101'},
+        {'hobby.last': '2016/01/01'},
+        {'hobby.last': '2016-01-01T00:00:00.000Z'}
+      ];
+
+      data = mapping.dataParseAll(data, define);
+      data.should.eql([
+        {'hobby.last': utcDate},
+        {'hobby.last': utcDate},
+        {'hobby.last': utcDate},
+        {'hobby.last': utcDate},
+        {'hobby.last': utcDate}
+      ]);
+
+      // test empty date & Date type date
+      data = [
+        {'hobby.last': null},
+        {'hobby.last': utcDate}
+      ];
+
+      data = mapping.dataParseAll(data, define, {tz: 'UTC'});
+      data.should.eql([
+        {'hobby.last': null},
+        {'hobby.last': utcDate}
+      ]);
+
+      done();
+    });
   });
 
   describe("exports.queryParseAll", function () {
@@ -343,6 +417,99 @@ describe("/lib/mongo/mapping", function () {
       };
       let result = mapping.queryParseAll(data, define);
       result.should.eql({$or: [{'single': true}, {'single': true}, {'single': true}]});
+      done();
+    });
+
+    it("parse date type", function (done) {
+
+      // test +8 Asia/Shanghai timezone
+      let data = {
+        $or: [
+          {'hobby.last': '2016/01/01'},
+          {'hobby.last': '2016-01-01'},
+          {'hobby.last': '20160101'},
+          {'hobby.last': '2016/01/01'},
+          {'hobby.last': '2015-12-31T16:00:00.000Z'},
+          {'hobby.last': '2016-01-01T00:00:00.000+08:00'},
+          {'hobby.last': '2016-01-01T01:00:00.000+09:00'}
+        ]
+      };
+
+      let zoneDate = moment('2016-01-01T00:00:00.000+08:00').toDate();
+      mapping.queryParseAll(data, define, {tz: 'Asia/Shanghai'});
+      data.should.eql({
+        '$or': [
+          {'hobby.last': zoneDate},
+          {'hobby.last': zoneDate},
+          {'hobby.last': zoneDate},
+          {'hobby.last': zoneDate},
+          {'hobby.last': zoneDate},
+          {'hobby.last': zoneDate},
+          {'hobby.last': zoneDate}
+        ]
+      });
+
+      // test utc timezone
+      data = {
+        $or: [
+          {'hobby.last': '2016/01/01'},
+          {'hobby.last': '2016-01-01'},
+          {'hobby.last': '20160101'},
+          {'hobby.last': '2016/01/01'},
+          {'hobby.last': '2016-01-01T00:00:00.000Z'}
+        ]
+      };
+
+      let utcDate = moment('2016-01-01T00:00:00.000Z').toDate();
+      data = mapping.queryParseAll(data, define, {tz: 'UTC'});
+      data.should.eql({
+        '$or': [
+          {'hobby.last': utcDate},
+          {'hobby.last': utcDate},
+          {'hobby.last': utcDate},
+          {'hobby.last': utcDate},
+          {'hobby.last': utcDate}
+        ]
+      });
+
+      // test no timezone
+      data = {
+        $or: [
+          {'hobby.last': '2016/01/01'},
+          {'hobby.last': '2016-01-01'},
+          {'hobby.last': '20160101'},
+          {'hobby.last': '2016/01/01'},
+          {'hobby.last': '2016-01-01T00:00:00.000Z'}
+        ]
+      };
+
+      data = mapping.queryParseAll(data, define);
+      data.should.eql({
+        '$or': [
+          {'hobby.last': utcDate},
+          {'hobby.last': utcDate},
+          {'hobby.last': utcDate},
+          {'hobby.last': utcDate},
+          {'hobby.last': utcDate}
+        ]
+      });
+
+      // test empty date & Date type date
+      data = {
+        $or: [
+          {'hobby.last': null},
+          {'hobby.last': utcDate}
+        ]
+      };
+
+      data = mapping.queryParseAll(data, define, {tz: 'UTC'});
+      data.should.eql({
+        '$or': [
+          {'hobby.last': null},
+          {'hobby.last': utcDate}
+        ]
+      });
+
       done();
     });
 
