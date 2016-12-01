@@ -365,13 +365,15 @@ describe("/lib/mongo/mapping", function () {
       // test empty date & Date type date
       data = [
         {'hobby.last': null},
-        {'hobby.last': utcDate}
+        {'hobby.last': utcDate},
+        {'hobby.last': moment(utcDate)}
       ];
 
       data = mapping.dataParseAll(data, define, {tz: 'UTC'});
       data.should.eql([
         {'hobby.last': null},
-        {'hobby.last': utcDate}
+        {'hobby.last': utcDate},
+        {'hobby.last': moment(utcDate)}
       ]);
 
       done();
@@ -498,7 +500,8 @@ describe("/lib/mongo/mapping", function () {
       data = {
         $or: [
           {'hobby.last': null},
-          {'hobby.last': utcDate}
+          {'hobby.last': utcDate},
+          {'hobby.last': moment(utcDate)}
         ]
       };
 
@@ -506,7 +509,8 @@ describe("/lib/mongo/mapping", function () {
       data.should.eql({
         '$or': [
           {'hobby.last': null},
-          {'hobby.last': utcDate}
+          {'hobby.last': utcDate},
+          {'hobby.last': moment(utcDate)}
         ]
       });
 
