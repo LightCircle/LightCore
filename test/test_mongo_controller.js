@@ -192,4 +192,17 @@ describe('/lib/mongo/controller', function () {
     });
   });
 
+
+  /** *************************************** **/
+  describe('command', function () {
+    it('run db copy command', function (done) {
+
+      handler.params.condition = {
+        command: {copydb: 1, fromdb: "SampleApp", todb: "SampleAppCopy"}
+      };
+
+      new controller(handler, 'test').command(done);
+    });
+  });
+
 });
