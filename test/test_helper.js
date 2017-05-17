@@ -59,4 +59,17 @@ describe("/lib/helper", function () {
       done();
     });
   });
+
+  /** *************************************** **/
+  describe("exports.yamlDumper", function () {
+
+    it("yamlDumper", function (done) {
+
+      let result = helper.yamlDumper({a: 1, b: {c: '2'}});
+
+      console.log(result);
+
+      done();
+    });
+  });
 });
