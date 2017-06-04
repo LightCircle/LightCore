@@ -72,4 +72,26 @@ describe("/lib/helper", function () {
       done();
     });
   });
+
+  /** *************************************** **/
+  describe("exports.tree", function () {
+
+    it("tree", function (done) {
+
+      let result = helper.tree('./', ['.git', '.idea','node_modules', 'coverage'], ['.gitignore']);
+
+      console.log(result);
+
+      done();
+    });
+  });
+
+  /** *************************************** **/
+  describe("exports.fileMd5", function () {
+
+    it("fileMd5", function (done) {
+      helper.fileMd5('./LICENSE').should.be.eql('fe98679655cd4f0bc8524f353987837b');
+      done();
+    });
+  });
 });
