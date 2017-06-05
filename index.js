@@ -79,7 +79,9 @@ module.exports = {
     "context":    require("./lib/http/context"),
     "loader":     require("./lib/http/loader"),
     "middleware": require("./lib/http/middleware"),
-    "response":   require("./lib/http/response")
+    "response":   require("./lib/http/response"),
+
+    "push":       require("./lib/tool/push2")
   },
 
   /**
