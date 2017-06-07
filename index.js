@@ -65,7 +65,7 @@ module.exports = {
     "signal":     require("./lib/signal"),
     "socket":     require("./lib/socket"),
     "mq":         require("./lib/mq"),
-    "validator":  require("./lib/validator"),
+    "validator":  require("./lib/validator2"),
 
     "mongomodel": require("./lib/mongo/model"),
     "mongoctrl":  require("./lib/mongo/controller"),
