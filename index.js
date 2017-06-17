@@ -99,12 +99,7 @@ module.exports = {
   }
 };
 
-/**
- * 整合underscore.string
- */
 function initialize() {
-  _.str = require("underscore.string");
-  _.mixin(_.str.exports());
   global.__core = __dirname;
 }
 
