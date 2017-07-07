@@ -5,6 +5,7 @@
 'use strict';
 
 const should  = require('should')
+  , helper = require('../lib/helper')
   , security  = require('../lib/security')
 ;
 
@@ -23,7 +24,8 @@ describe('/lib/security', function () {
 
     it('encrypt2', function (done) {
 
-      console.log(security.encrypt2('2e35501c2b7e', 'light'));
+      const pwd = helper.randomGUID12();
+      console.log(security.encrypt2(pwd, 'light'));
 
       done();
     });
