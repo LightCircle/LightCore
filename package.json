@@ -53,6 +53,7 @@
     "qr-image": "3.2.0",
     "range-parser": "1.2.0",
     "request": "2.81.0",
+    "should": "11.2.1",
     "underscore": "1.8.3",
     "unzip": "0.1.11",
     "uuid": "3.0.1",
@@ -61,8 +62,5 @@
     "xlsx": "0.9.13",
     "xml2js": "0.4.17",
     "zip-stream": "1.1.1"
-  },
-  "devDependencies": {
-    "should": "^11.2.1"
   }
 }

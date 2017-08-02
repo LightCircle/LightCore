@@ -18,6 +18,15 @@ module.exports = {
   job:          require('./lib/model/job'),
   file:         require('./lib/model/file'),
   context:      require('./lib/http/context'),
+  mysql: {
+    controller: require("./lib/mysql/controller"),
+    model:      require("./lib/mysql/model"),
+  },
+  mongodb: {
+    model:      require("./lib/mongo/model"),
+    controller: require("./lib/mongo/controller"),
+    connection: require("./lib/mongo/connection"),
+  },
 
   /**
    * @deprecated
