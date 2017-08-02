@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/SmartCircle/LightFramework.git"
+    "url": "git://github.com/LightCircle/LightCore.git"
   },
   "keywords": [
     "light"
@@ -16,9 +16,9 @@
   "author": "r2space@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SmartCircle/LightFramework/issues"
+    "url": "https://github.com/LightCircle/LightCore/issues"
   },
-  "homepage": "https://github.com/SmartCircle/LightFramework",
+  "homepage": "https://github.com/LightCircle/LightCore",
   "dependencies": {
     "accept-language": "3.0.15",
     "amqp": "0.2.6",
@@ -53,8 +53,6 @@
     "qr-image": "3.2.0",
     "range-parser": "1.2.0",
     "request": "2.81.0",
-    "should": "11.2.1",
-    "simple-git": "1.72.0",
     "underscore": "1.8.3",
     "unzip": "0.1.11",
     "uuid": "3.0.1",
@@ -63,5 +61,8 @@
     "xlsx": "0.9.13",
     "xml2js": "0.4.17",
     "zip-stream": "1.1.1"
+  },
+  "devDependencies": {
+    "should": "^11.2.1"
   }
 }

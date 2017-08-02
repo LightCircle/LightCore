@@ -3,11 +3,24 @@
  * @author r2space@gmail.com
  */
 
-"use strict";
+'use strict';
 
 module.exports = {
 
+  CONST:        require('./lib/constant'),
+  cache:        require('./lib/cache'),
+  crypto:       require('./lib/crypto'),
+  error:        require('./lib/error'),
+  log:          require('./lib/log'),
+  helper:       require('./lib/helper'),
+  rider:        require('./lib/model/datarider'),
+  migrate:      require('./lib/model/datamigrate'),
+  job:          require('./lib/model/job'),
+  file:         require('./lib/model/file'),
+  context:      require('./lib/http/context'),
+
   /**
+   * @deprecated
    * nodejs语言级别可用的模块
    */
   lang: {
@@ -23,6 +36,7 @@ module.exports = {
   },
 
   /**
+   * @deprecated
    * 第三方模块
    */
   util: {
@@ -37,7 +51,6 @@ module.exports = {
     "mpath":        require("mpath"),
     "zip":          require("zip-stream"),
     "cron":         require("cron"),
-    "git":          require("simple-git"),
     "mime":         require("mime-types"),
 
     /* 废弃或移出预定 */
@@ -47,6 +60,7 @@ module.exports = {
   },
 
   /**
+   * @deprecated
    * 工具模块
    */
   framework: {
@@ -79,10 +93,11 @@ module.exports = {
     "middleware": require("./lib/http/middleware"),
     "response":   require("./lib/http/response"),
 
-    "push":       require("./lib/tool/push2")
+    "push":       require("./lib/tool/push")
   },
 
   /**
+   * @deprecated
    * 数据定义模块
    */
   model: {
