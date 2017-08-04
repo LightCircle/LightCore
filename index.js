@@ -18,6 +18,7 @@ module.exports = {
   job:          require('./lib/model/job'),
   file:         require('./lib/model/file'),
   context:      require('./lib/http/context'),
+  push:         require("./lib/tool/push"),
   mysql: {
     controller: require("./lib/mysql/controller"),
     model:      require("./lib/mysql/model"),
@@ -26,6 +27,25 @@ module.exports = {
     model:      require("./lib/mongo/model"),
     controller: require("./lib/mongo/controller"),
     connection: require("./lib/mongo/connection"),
+  },
+
+  /**
+   * 第三方模块
+   */
+  util: {
+    'async':        require('async'),
+    'ejs':          require('ejs'),
+    'mongodb':      require('mongodb'),
+    'moment':       require('moment'),
+    'numeral':      require('numeral'),
+    'underscore':   require('underscore'),
+    'xml2js':       require('xml2js'),
+    'request':      require('request'),
+    'mpath':        require('mpath'),
+    'zip':          require('zip-stream'),
+    'cron':         require('cron'),
+    'mime':         require('mime-types'),
+    'express':      require('express')
   },
 
   /**
@@ -42,30 +62,6 @@ module.exports = {
     "events":       require("events"),          // Stability: 4 - API Frozen
     "childproc":    require("child_process"),   // Stability: 3 - Stable
     "querystring":  require("querystring")      // Stability: 3 - Stable
-  },
-
-  /**
-   * @deprecated
-   * 第三方模块
-   */
-  util: {
-    "async":        require("async"),
-    "ejs":          require("ejs"),
-    "mongodb":      require("mongodb"),
-    "moment":       require("moment"),
-    "numeral":      require("numeral"),
-    "underscore":   require("underscore"),
-    "xml2js":       require("xml2js"),
-    "request":      require("request"),
-    "mpath":        require("mpath"),
-    "zip":          require("zip-stream"),
-    "cron":         require("cron"),
-    "mime":         require("mime-types"),
-
-    /* 废弃或移出预定 */
-    //"config":       require("config"),
-    "express":      require("express")
-
   },
 
   /**
