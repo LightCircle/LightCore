@@ -1,6 +1,6 @@
 {
   "name": "light-core",
-  "version": "0.5.19",
+  "version": "0.5.20",
   "description": "LightCore",
   "main": "index.js",
   "scripts": {
