@@ -38,10 +38,11 @@ module.exports = {
     'mongodb':      require('mongodb'),
     'moment':       require('moment'),
     'numeral':      require('numeral'),
-    'underscore':   require('underscore'),
+    'underscore':   require('underscore'),// 废弃预定
+    'lodash':       require('lodash'),
     'xml2js':       require('xml2js'),
     'request':      require('request'),
-    'mpath':        require('mpath'),
+    'mpath':        require('mpath'),     // 废弃预定
     'zip':          require('zip-stream'),
     'cron':         require('cron'),
     'mime':         require('mime-types'),

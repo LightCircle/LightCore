@@ -38,6 +38,7 @@
     "helmet": "3.6.0",
     "js-yaml": "3.8.4",
     "jwt-simple": "0.5.1",
+    "lodash": "4.17.4",
     "lru-cache": "4.0.2",
     "method-override": "2.3.8",
     "mime-types": "2.1.15",
