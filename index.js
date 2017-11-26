@@ -19,6 +19,8 @@ module.exports = {
   file:         require('./lib/model/file'),
   context:      require('./lib/http/context'),
   push:         require("./lib/tool/push"),
+  test:         require("./lib/test"),
+  loader:       require("./lib/http/loader"),
   mysql: {
     controller: require("./lib/mysql/controller"),
     model:      require("./lib/mysql/model"),
@@ -113,6 +115,7 @@ module.exports = {
     system:       require("./lib/model/system"),
     rider:        require("./lib/model/datarider"),
     migrate:      require("./lib/model/datamigrate"),
+    process:      require("./lib/model/process"),
     job:          require("./lib/model/job"),
     file:         require("./lib/model/file") // file里的方法通过API可以使用，但是在APP的后台无法调用，故开放（其他类需要斟酌后陆续添加）
   }
