@@ -21,6 +21,8 @@ module.exports = {
   push:         require("./lib/tool/push"),
   test:         require("./lib/test"),
   loader:       require("./lib/http/loader"),
+  middleware:   require("./lib/http/middleware"),
+  dispatcher:   require("./lib/dispatcher"),
   mysql: {
     controller: require("./lib/mysql/controller"),
     model:      require("./lib/mysql/model"),
@@ -93,7 +95,7 @@ module.exports = {
     "mongotype":  require("./lib/mongo/type"),
     "mongooper":  require("./lib/mongo/operator"),
 
-    "oracle":     require("./lib/oracle/connection"),
+    "oracle":     require("./lib/db/oracle/connection"),
     "mysql":      require("./lib/mysql/controller"),
 
     "context":    require("./lib/http/context"),

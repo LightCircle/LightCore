@@ -27,3 +27,37 @@ Web，iOS，Android三方SDK，降低学习成本，减少繁琐调试，快速�
 * 手机端iOS, Android移动应用开发支持 （Native or Highbridge）
 * DevOps理念设计，实现运维的自动化和可视化
 * 通用企业应用模块提供，同时支持流行元素 （微信应用，移动支付等）
+
+### 依赖
+#### Microsoft Sqlserver支持
+- tedious                   - sqlserver驱动
+- tedious-connection-pool   - 连接池
+- connect-tedious           - 基于 sqlserver 的session store实现
+
+#### MySQL支持
+- mysql                     - mysql驱动
+- express-mysql-session     - 基于 mysql 的session store实现
+
+#### MongoDB支持
+- mongodb
+- connect-mongo
+
+#### Oracle支持
+- oracle
+- generic-pool
+
+#### 通用工具
+- lodash                    - js语言扩展
+- moment                    - 日期处理
+- moment-timezone           - 时区处理
+- request                   - 网络请求
+- async                     - 异步逻辑处理
+- js-yaml                   - yaml文件处理
+- uuid                      -
+
+#### Web框架
+- express
+- ejs
+- csurf
+- cookie
+- multiparty
