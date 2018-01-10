@@ -24,13 +24,13 @@ module.exports = {
   middleware:   require("./lib/http/middleware"),
   dispatcher:   require("./lib/dispatcher"),
   mysql: {
-    controller: require("./lib/mysql/controller"),
-    model:      require("./lib/mysql/model"),
+    controller: require("./lib/db/mysql/controller"),
+    model:      require("./lib/db/mysql/model"),
   },
   mongodb: {
-    model:      require("./lib/mongo/model"),
-    controller: require("./lib/mongo/controller"),
-    connection: require("./lib/mongo/connection"),
+    model:      require("./lib/db/mongo/model"),
+    controller: require("./lib/db/mongo/controller"),
+    connection: require("./lib/db/mongo/connection"),
   },
 
   /**
@@ -89,14 +89,14 @@ module.exports = {
     "mq":         require("./lib/mq"),
     "validator":  require("./lib/validator2"),
 
-    "mongomodel": require("./lib/mongo/model"),
-    "mongoctrl":  require("./lib/mongo/controller"),
-    "mongo":      require("./lib/mongo/connection"),
-    "mongotype":  require("./lib/mongo/type"),
-    "mongooper":  require("./lib/mongo/operator"),
+    "mongomodel": require("./lib/db/mongo/model"),
+    "mongoctrl":  require("./lib/db/mongo/controller"),
+    "mongo":      require("./lib/db/mongo/connection"),
+    "mongotype":  require("./lib/db/mongo/type"),
+    "mongooper":  require("./lib/db/mongo/operator"),
 
     "oracle":     require("./lib/db/oracle/connection"),
-    "mysql":      require("./lib/mysql/controller"),
+    "mysql":      require("./lib/db/mysql/controller"),
 
     "context":    require("./lib/http/context"),
     "loader":     require("./lib/http/loader"),
