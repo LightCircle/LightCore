@@ -33,13 +33,29 @@ describe('/lib/sqlserver/controller', () => {
   });
 
   describe('query', () => {
-    it('list', done => {
-      handler.params.condition = {section: '5a3a0aa718bfa9791309ee59', position: '5a3a0fee18bfa9791309ee60'};
-      rider.employee.list(handler, (err, result) => {
-        console.log(err, result);
-        done();
-      });
-    });
+    // it('list', done => {
+    //   handler.params.condition = {section: '5a3a0aa718bfa9791309ee59', position: '5a3a0fee18bfa9791309ee60'};
+    //   rider.employee.list(handler, (err, result) => {
+    //     console.log(err, result);
+    //     done();
+    //   });
+    // });
+
+    // it('get', done => {
+    //   handler.params.id = '5a3a0aa718bfa9791309ee59';
+    //   rider.employee.get(handler, (err, result) => {
+    //     console.log(err, result);
+    //     done();
+    //   });
+    // });
+
+    // it('add', done => {
+    //   handler.params.data = {};
+    //   rider.employee.add(handler, (err, result) => {
+    //     console.log(err, result);
+    //     done();
+    //   });
+    // });
   });
 
 });
