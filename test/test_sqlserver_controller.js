@@ -5,8 +5,6 @@
 'use strict';
 
 let _       = require('lodash')
-    // , moment   = require('moment-timezone')
-    // , should   = require('should')
   , CONST   = require('../lib/constant')
   , context = require('../lib/http/context')
   , ctrl    = require('../lib/db/sqlserver/controller')
@@ -14,14 +12,9 @@ let _       = require('lodash')
 
 describe('/lib/sqlserver/controller', () => {
 
-  let _id     = undefined
-    , handler = undefined
-    , uid     = '000000000000000000000001';
-
-  const domain = '710530fe8f7f'
-    , code     = ''
-    , table    = ''
-    , options  = {};
+  let handler = undefined
+    , uid     = '000000000000000000000001'
+    , domain  = '710530fe8f7f';
 
   before(() => {
     handler = new context().create(uid, domain, CONST.SYSTEM_DB_PREFIX);
@@ -34,20 +27,20 @@ describe('/lib/sqlserver/controller', () => {
 
   describe('query', () => {
 
-    // it('list', done => {
-    //
-    //   handler.params.script = 'SELECT ' +
-    //     'xml.query(\'/root/item\') AS A, ' +
-    //     'xml.query(\'/root[item=3]\') AS B, [_id], [createAy] ' +
-    //     'FROM [dbo].[xml] WHERE [_id] = <%- condition._id %>';
-    //
-    //   handler.params.condition = {_id: 'x123456789'};
-    //
-    //   new ctrl(handler).list((err, result) => {
-    //     console.log(err, result);
-    //     done();
-    //   });
-    // });
+    it('list', done => {
+
+      handler.params.script = 'SELECT ' +
+        'xml.query(\'/root/item\') AS A, ' +
+        'xml.query(\'/root[item=3]\') AS B, [_id], [createAy] ' +
+        'FROM [dbo].[xml] WHERE [_id] = <%- condition._id %>';
+
+      handler.params.condition = {_id: 'x123456789'};
+
+      new ctrl(handler).list((err, result) => {
+        console.log(err, result);
+        done();
+      });
+    });
 
     // it('add', function (done) {
     //

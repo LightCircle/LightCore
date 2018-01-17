@@ -34,3 +34,4 @@ instantclient/
 
 # 测试覆盖率检查
 coverage
+test/setting
