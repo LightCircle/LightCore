@@ -1,5 +1,5 @@
 /**
- * @file test controller
+ * @file test model
  */
 
 'use strict';
@@ -12,7 +12,7 @@ let _        = require('lodash')
   , model    = require('../lib/db/sqlserver/model')
 ;
 
-describe('/lib/mongo/controller', function () {
+describe('/lib/sqlserver/controller', function () {
 
   let _id = undefined;
   let handler = undefined;
