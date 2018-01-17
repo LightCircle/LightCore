@@ -49,13 +49,38 @@ describe('/lib/sqlserver/controller', () => {
     //   });
     // });
 
+    // it('count', done => {
+    //   handler.params.id = '5a3a0aa718bfa9791309ee59';
+    //   rider.employee.count(handler, (err, result) => {
+    //     console.log(err, result);
+    //     done();
+    //   });
+    // });
+
     // it('add', done => {
-    //   handler.params.data = {};
+    //   handler.params.data = {id: 'r2space', name: '字符'};
     //   rider.employee.add(handler, (err, result) => {
     //     console.log(err, result);
     //     done();
     //   });
     // });
+
+    // it('update', done => {
+    //   handler.params.data = {id: 'r2space', name: '字符'};
+    //   handler.params.id = '5a3a0aa718bfa9791309ee59';
+    //   rider.employee.update(handler, (err, result) => {
+    //     console.log(err, result);
+    //     done();
+    //   });
+    // });
+
+    it('remove', done => {
+      handler.params.id = '5a3a0aa718bfa9791309ee59';
+      rider.employee.remove(handler, (err, result) => {
+        console.log(err, result);
+        done();
+      });
+    });
   });
 
 });
