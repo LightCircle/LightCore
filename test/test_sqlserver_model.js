@@ -10,6 +10,7 @@ let _        = require('lodash')
   , constant = require('../lib/constant')
   , context  = require('../lib/http/context')
   , model    = require('../lib/db/sqlserver/model')
+  , Type     = require('../lib/db/sqlserver/type')
 ;
 
 describe('/lib/sqlserver/controller', function () {
@@ -38,16 +39,27 @@ describe('/lib/sqlserver/controller', function () {
 
   describe('query', function () {
 
-    // it('list', function (done) {
-    //
-    //   const query = 'SELECT xml.query(\'/root/item\') AS A, xml.query(\'/root[item=3]\') AS B, [_id], [createAy] FROM [dbo].[xml] WHERE [_id] = \'<%- _id %>\''
-    //     , params  = {_id: 'x123456789'};
-    //
-    //   new model(domain, code, table, options).list(query, params, (err, result) => {
-    //     console.log(err, result);
-    //     done();
-    //   });
-    // });
+    it('list', function (done) {
+
+      // SELECT
+      //   [experience].query('/root/element/end')
+      // FROM [USER]
+      // WHERE
+      // --[experience].exist('/root/element/company[text()="多奥"]') = 1
+      // --[experience].exist('/root/element/company[contains(.,"")]') = 1
+      // --[experience].exist('/root/element/end[not(text()="")]') = 1
+
+      const params = {_id: new Type.XPathString('5a20c719f4143e80c11220a2')};
+      const query = '' +
+        'SELECT [_id], [resource] ' +
+        'FROM [dbo].[access] ' +
+        'WHERE [resource].exist(\'/root/element[text()=<%- condition._id %>]\') = 1';
+
+      new model(domain, code, table, options).list(query, params, (err, result) => {
+        console.log(err, result);
+        done();
+      });
+    });
 
     // it('add', function (done) {
     //
@@ -97,16 +109,16 @@ describe('/lib/sqlserver/controller', function () {
     //   });
     // });
 
-    it('count', function (done) {
-
-      const query = 'SELECT COUNT(1) AS COUNT FROM [dbo].[xml]'
-        , params  = {};
-
-      new model(domain, code, table, options).count(query, params, (err, result) => {
-        console.log(err, result);
-        done();
-      });
-    });
+    // it('count', function (done) {
+    //
+    //   const query = 'SELECT COUNT(1) AS COUNT FROM [dbo].[xml]'
+    //     , params  = {};
+    //
+    //   new model(domain, code, table, options).count(query, params, (err, result) => {
+    //     console.log(err, result);
+    //     done();
+    //   });
+    // });
 
   });
 
