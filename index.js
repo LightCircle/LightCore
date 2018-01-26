@@ -46,11 +46,11 @@ module.exports = {
     'lodash':       require('lodash'),
     'xml2js':       require('xml2js'),
     'request':      require('request'),
-    'mpath':        require('mpath'),     // 废弃预定
     'zip':          require('zip-stream'),
     'cron':         require('cron'),
     'mime':         require('mime-types'),
-    'express':      require('express')
+    'express':      require('express'),
+    'mpath':        require('./lib/mpath')
   },
 
   /**
