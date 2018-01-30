@@ -5,18 +5,14 @@
 'use strict';
 
 const should = require('should')
-  , mapping  = require('../lib/db/sqlserver/mapping')
-;
+  , mapping  = require('../lib/db/sqlserver/mapping');
 
-describe('/lib/sqlserver/mapping', () => {
-
-  before(() => {
-  });
+describe('/lib/db/sqlserver/mapping', () => {
 
   /** *************************************** **/
-  describe('build', () => {
+  describe('build & parse', () => {
 
-    it('build', done => {
+    it('buildXML', done => {
 
       const data = {
         a: 1,
@@ -29,13 +25,13 @@ describe('/lib/sqlserver/mapping', () => {
         h: [{a: [1]}, {b: [2]}]
       };
 
-      const result = new mapping().build(data);
+      const result = new mapping().buildXML(data);
       console.log(result);
 
       done();
     });
 
-    it('parse', done => {
+    it('rsParse', done => {
 
       const data = [[
         {
@@ -80,7 +76,7 @@ describe('/lib/sqlserver/mapping', () => {
         }
       ]];
 
-      new mapping().parse(data, (err, result) => {
+      new mapping().rsParse(data, (err, result) => {
 
         result.forEach(row => {
           Object.keys(row).forEach(key => {
