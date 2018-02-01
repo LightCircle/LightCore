@@ -36,7 +36,7 @@ describe('/lib/model/datamigrate', () => {
 
       rider.etl.get(handler, {condition: {name: 'i18n-imp'}}, function (err, option) {
 
-        handler.params.files = [{path: `${__dirname}/etl/i18n.xlsx`}];
+        handler.params.files = [{path: `${__dirname}/controllers/i18n.xlsx`}];
         option.class = 'etl';
 
         new etl.importer(handler, option).exec((err, result) => {

@@ -17,6 +17,11 @@ exports.before = function (handler, data, callback) {
 
 exports.parse = function (handler, row, callback) {
   console.log('>> custom parse');
+  row.lang = row.lang.split(',').reduce((memo, item) => {
+    const [key, val] = item.split(':');
+    memo[key] = val;
+    return memo;
+  }, {});
   callback();
 };
 
@@ -37,6 +42,5 @@ exports.dump = function (handler, data, callback) {
 
 exports.end = function (handler, result, callback) {
   console.log('>> custom end');
-  console.log(result);
   callback();
 };
