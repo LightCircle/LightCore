@@ -23,6 +23,7 @@ module.exports = {
   loader:       require("./lib/http/loader"),
   middleware:   require("./lib/http/middleware"),
   dispatcher:   require("./lib/http/dispatcher"),
+  response:     require("./lib/http/response"),
   mysql: {
     controller: require("./lib/db/mysql/controller"),
     model:      require("./lib/db/mysql/model"),
