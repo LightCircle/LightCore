@@ -22,7 +22,7 @@ module.exports = {
   test:         require("./lib/test"),
   loader:       require("./lib/http/loader"),
   middleware:   require("./lib/http/middleware"),
-  dispatcher:   require("./lib/dispatcher"),
+  dispatcher:   require("./lib/http/dispatcher"),
   mysql: {
     controller: require("./lib/db/mysql/controller"),
     model:      require("./lib/db/mysql/model"),
@@ -113,7 +113,7 @@ module.exports = {
   model: {
     auth:         require("./lib/security"), // 预定废弃，请使用security
     security:     require("./lib/security"),
-    dispatcher:   require("./lib/dispatcher"),
+    dispatcher:   require("./lib/http/dispatcher"),
     system:       require("./lib/model/system"),
     rider:        require("./lib/model/datarider"),
     migrate:      require("./lib/model/datamigrate"),
