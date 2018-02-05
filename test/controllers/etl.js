@@ -17,7 +17,7 @@ exports.before = function (handler, data, callback) {
 
 exports.parse = function (handler, row, callback) {
   console.log('>> custom parse');
-  row.lang = row.lang.split(',').reduce((memo, item) => {
+  row.lang = row.lang.reduce((memo, item) => {
     const [key, val] = item.split(':');
     memo[key] = val;
     return memo;

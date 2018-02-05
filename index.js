@@ -50,8 +50,7 @@ module.exports = {
     'zip':          require('zip-stream'),
     'cron':         require('cron'),
     'mime':         require('mime-types'),
-    'express':      require('express'),
-    'mpath':        require('./lib/mpath')
+    'express':      require('express')
   },
 
   /**
