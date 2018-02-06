@@ -80,6 +80,20 @@ describe('/lib/sqlserver/operator', () => {
       done();
     });
 
+    it('empty list', done => {
+
+      const out  = {condition: {}},
+            free = {
+              valid: 1,
+              $or  : [{level: 'system'}, {_id: {$in: []}}]
+            };
+
+      const result = operator.parseFree(free, 'test', out);
+      console.log(result, out);
+
+      done();
+    });
+
   });
 
 });
